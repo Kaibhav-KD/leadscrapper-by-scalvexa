@@ -1,170 +1,208 @@
-<<<<<<< HEAD
-# Leadscrapper By Scalvexa — Free Google Maps Scraper (Chrome Extension)
+# Leadscrapper by Scalvexa
 
-**Leadscrapper By Scalvexa is a free, open-source Google Maps scraper** — a Chrome /
-Chromium extension that extracts public business data from **Google Maps**
-(plus **Yandex Maps** and **2GIS**) and exports it to **CSV, XLSX or JSON** in
-one click. No account, no API key, no quotas, no tracking.
+### Find Leads. Filter What Matters. Export Clean Data.
 
-If you've been looking for a **free Google Maps scraper for lead generation**
-that runs entirely in your browser, this is it: search any place on Google Maps,
-hit **Start extracting**, and download a clean spreadsheet of business leads —
-names, addresses, phone numbers, websites, ratings, reviews and more.
+**Leadscrapper by Scalvexa** is a Chrome extension designed to simplify business lead generation from Google Maps. Instead of extracting every available field and spending hours cleaning spreadsheets, you can **choose the lead information you need before exporting**.
 
-**🌐 Website & docs: [leadscrapper-by-scalvexa.vercel.app](https://leadscrapper-by-scalvexa.vercel.app/)** — install guide, how-to and FAQ.
- 
-<p>
-  <a href="https://leadscrapper-by-scalvexa.vercel.app/"><img alt="Website" src="https://img.shields.io/badge/website-leadscrapper--by--scalvexa.vercel.app-0a7cff.svg"></a>
-  <a href="https://github.com/Kaibhav-KD/leadscrapper-by-scalvexa"><img alt="GitHub" src="https://img.shields.io/badge/github-Kaibhav--KD%2Fleadscrapper--by--scalvexa-181717.svg"></a>
-  <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-green.svg">
-  <img alt="Manifest V3" src="https://img.shields.io/badge/Chrome-MV3-blue.svg">
-  <img alt="Free & Open Source" src="https://img.shields.io/badge/free-open--source-brightgreen.svg">
-</p>
+Whether you're building prospect lists, researching businesses, finding potential clients, or preparing data for outreach, Leadscrapper helps you focus on the data that matters.
 
-> ⚠️ Use responsibly and in compliance with the terms of service of the maps you
-> scrape and with applicable data-protection laws. Only public business data.
+**GitHub Repository:** https://github.com/Kaibhav-KD/leadscrapper-by-scalvexa
 
-## Why Leadscrapper By Scalvexa?
+---
 
-- 🆓 **Truly free Google Maps scraper** — MIT-licensed, no paywall, no sign-up, no credit card.
-- 🗺️ **Google Maps, Yandex Maps & 2GIS** — one tool, three of the biggest map providers.
-- 🔑 **No API key, no Google Places API** — scrapes the page you're looking at, in your browser.
-- 📤 **One-click export** to **CSV / Excel (XLSX) / JSON**.
-- ⭐ **Google Maps reviews export** — download every review of a business (text, rating, date, owner reply, photos).
-- 🧲 **Built for lead generation** — turn any map search into a list of business leads.
-- ⚡ **Standalone in-browser contact enrichment** — scrapes **emails, phone numbers and social links** directly from business websites inside your browser (no backend or Docker required!).
-- 🔌 **Optional self-hosted backend** — for users who want server-side Puppeteer rendering.
-- 🤖 **MCP server included** — let Claude (or any MCP client) collect and analyze leads on command.
-- 🕵️ **Private** — runs locally, your data never touches our servers (there are none).
+## 🚀 The Problem We're Solving
 
-## What you can extract
+Traditional lead generation often involves a repetitive workflow:
 
-Business name · category · full address · phone number · website · rating ·
-review count · latitude / longitude · opening hours · claimed status · menu /
-booking links — and **email addresses, phone numbers and social media links**
-scraped directly from each business's own website right in your browser.
+1. Search for businesses on Google Maps.
+2. Extract a large amount of business information.
+3. Export everything into a spreadsheet.
+4. Manually remove unnecessary columns and fields.
+5. Clean and organize the data before using it.
 
-**Reviews** of any single place: author · rating · text (original + Google
-translation) · language · publish/edit date · sub-ratings (food, service, price
-per person…) · photo links · owner response · review link.
+This wastes valuable time that could be spent finding prospects, personalizing outreach, and growing a business.
 
-## Supported platforms
+### 💡 Our Solution: Filter Before You Export
 
-| Map | Status |
-| --- | --- |
-| Google Maps | ✅ Google Maps scraper (search results + reviews of a place) |
-| Yandex Maps | ✅ |
-| 2GIS | ✅ |
+**You shouldn't have to clean data you never wanted in the first place.**
 
-## Quick start (install the Chrome extension)
+Leadscrapper focuses on a simple idea: give users control over the information they collect.
 
-### Install the ready-made build (no coding)
-1. Go to **[Releases → latest](https://github.com/Kaibhav-KD/leadscrapper-by-scalvexa/releases/latest)** and download
-   **`leadscrapper-extension-vX.Y.Z.zip`** (not "Source code").
-2. Unzip it.
-3. Open `chrome://extensions` → enable **Developer mode** → **Load unpacked** →
-   select the unzipped folder (the one that contains `manifest.json`).
+- 🎯 **Choose the fields you need** instead of exporting unnecessary information.
+- 🧹 **Reduce manual spreadsheet cleaning** by filtering your data before export.
+- 📊 **Build relevant lead lists** tailored to your prospecting needs.
+- ⚡ **Save time** on repetitive data organization.
+- 🔄 **Adapt your workflow** by selecting different fields for different projects.
 
-> ⚠️ The green **Code → Download ZIP** button gives you the *source code*, not the
-> extension. Loading that folder fails with *"Manifest file is missing or unreadable"* —
-> use the Releases zip above, or build it yourself.
+The goal isn't simply to collect more data. It's to make the data more useful.
 
-### Build from source
-Requirements: Node.js >= 20 and pnpm >= 9 (`npm i -g pnpm`).
+---
+
+## ✨ Key Features
+
+### 🎯 Custom Lead Filtering
+Choose the information you need for your lead-generation workflow before exporting your data.
+
+### 🗺️ Google Maps Business Extraction
+Extract publicly displayed business information from Google Maps search results.
+
+### 📁 Multiple Export Formats
+Export collected data in supported formats:
+
+- CSV
+- Excel (XLSX)
+- JSON
+
+### 📞 Business Information Collection
+Collect available details such as business names, addresses, phone numbers, websites, ratings, and review counts.
+
+### 🌐 Website Contact Enrichment
+Where supported and enabled, discover publicly available email addresses, phone numbers, and social media links from business websites.
+
+### ⚡ Browser-Based Workflow
+Use the extension directly in your browser without requiring a Google Places API key for its Google Maps extraction workflow.
+
+### 🔒 Privacy-Conscious Design
+The core extraction workflow is designed to run in the browser. Review the source code and any optional backend configuration to understand how data is handled.
+
+---
+
+## 📋 What Information Can You Collect?
+
+Depending on the source and the fields supported by the extension, available information may include:
+
+- Business name
+- Business category
+- Address
+- Phone number
+- Website URL
+- Rating and review count
+- Latitude and longitude
+- Opening hours
+- Other supported business details
+
+Website enrichment may additionally discover publicly available email addresses, phone numbers, and social media links.
+
+**The key difference:** select the fields relevant to your workflow and avoid unnecessary information in your export.
+
+---
+
+## 🛠️ How It Works
+
+1. **Install** the extension in Chrome.
+2. **Search** for a business category or location on Google Maps.
+3. **Filter** by selecting the information you need.
+4. **Extract** the available business information.
+5. **Export** your results in a supported format.
+6. **Use your lead list** for research, prospecting, and outreach.
+
+Your workflow stays focused on the information you actually need.
+
+---
+
+## 📥 Installation
+
+### Option 1: Install a Release
+
+1. Visit the [GitHub Releases page](https://github.com/Kaibhav-KD/leadscrapper-by-scalvexa/releases/latest).
+2. Download an available extension package.
+3. Extract the downloaded ZIP file.
+4. Open `chrome://extensions` in Chrome.
+5. Enable **Developer mode**.
+6. Click **Load unpacked**.
+7. Select the extracted folder containing `manifest.json`.
+
+### Option 2: Build from Source
+
+If the repository contains the documented pnpm workspace and build scripts, install the dependencies and build the extension:
+
 ```bash
 pnpm install
 pnpm build:extension
 ```
-Then in Chrome: open `chrome://extensions` → enable **Developer mode** →
-**Load unpacked** → select `apps/extension/dist`.
 
-📖 Step-by-step install guide with screenshots: **[leadscrapper-by-scalvexa.vercel.app/install](https://leadscrapper-by-scalvexa.vercel.app/install)**.
+Then open `chrome://extensions`, enable Developer mode, select **Load unpacked**, and choose the generated extension directory. Check the repository configuration for the exact output path and requirements.
 
-Open Google Maps, search for anything (e.g. *"coffee shops in Berlin"*), click
-**Start extracting**, then **Export** to download your CSV or Excel file. The extension works
-**standalone** — Google Maps scraping needs no backend and no login.
+---
 
-To export reviews, open a single place (e.g. click a business in the results),
-click **Extract reviews**, wait until the counter stops, then **Export reviews**.
-The extension opens the Reviews tab and scrolls it for you; you need to be signed
-in to Google, because Maps shows only a limited view without reviews to signed-out users.
+## 👥 Who Is It For?
 
-### Website contact enrichment (emails / phones / socials)
-Leadscrapper By Scalvexa includes an opt-in **built-in standalone in-browser crawler** that visits business websites with missing contacts before export. You can enable it in extension **Settings** ("Enrich missing email / phone"), which asks for permission to access websites at runtime.
+- **Freelancers** — discover potential clients.
+- **Digital marketing agencies** — research businesses that may need marketing, websites, or automation.
+- **Sales professionals** — build relevant prospect lists.
+- **Founders and startups** — research target markets.
+- **Researchers** — organize publicly available business information.
+- **Small businesses** — discover businesses in their target locations.
 
-It performs a fast, plain HTML fetch client-side in your browser with zero backend setup. Note that because it fetches raw HTML without rendering JavaScript, JS-only (SPA) websites won't yield contacts — for full JavaScript rendering, use the optional Puppeteer backend below. A live progress indicator shows real-time enrichment progress during export.
+---
 
-#### Optional: Puppeteer backend
-For advanced users who prefer headless server-side crawling with JavaScript rendering:
-```bash
-pnpm dev:api
-# or: cd apps/api && docker compose up --build
-```
-Then open extension **Settings** and set the **Backend URL** (default `http://localhost:5050`). When enabled, the backend is used if running; otherwise, the extension seamlessly falls back to the in-browser crawler.
+## 🆚 Why Filter Before Exporting?
 
-### Optional: MCP server (collect leads from Claude)
-A built-in [MCP server](apps/api/MCP.md) lets an AI assistant such as Claude run
-`collect_maps(...)` to scrape businesses through the extension and analyze them.
-See [apps/api/MCP.md](apps/api/MCP.md).
+| Traditional workflow | Leadscrapper approach |
+|---|---|
+| Extract everything | Focus on the fields you need |
+| Export unnecessary columns | Keep exports relevant |
+| Manually clean spreadsheets | Reduce repetitive cleanup |
+| Spend time organizing data | Spend more time using your leads |
+| Repeat the cleanup process | Adapt fields to each workflow |
 
-## Monorepo layout
-```
-leadscrapper-by-scalvexa/
-└── apps/
-    ├── api/         # Optional stateless backend (NestJS + Puppeteer) + MCP server
-    └── extension/   # Chrome MV3 extension (Turborepo + Vite + React)
-```
-Tooling: **pnpm workspaces + Turborepo**.
+---
 
-## Development
-```bash
-pnpm dev:extension   # watch-build the extension
-pnpm dev:api         # run the backend in watch mode
-pnpm lint
-pnpm type-check
-pnpm test
-```
+## 🛡️ Responsible Use
 
-### Releasing
-Bump `APP_VERSION` in `apps/extension/packages/shared/config.ts`, merge, then push a
-matching tag (`git tag v1.2.0 && git push origin v1.2.0`). The **Extension** GitHub
-Action builds the extension and attaches `leadscrapper-extension-vX.Y.Z.zip` to the release.
+Use Leadscrapper responsibly and comply with the applicable terms of service of the platforms you access and relevant privacy and data-protection laws.
 
-## FAQ
+- Collect and use information for legitimate purposes.
+- Respect website restrictions and access controls.
+- Follow applicable requirements for marketing communications and personal data.
+- Remember that publicly accessible information may still be subject to privacy and outreach regulations.
 
-**Is this really a free Google Maps scraper?**
-Yes — 100% free and open-source (MIT). No account, no quotas, no trial, no
-hidden Pro tier.
+---
 
-**Do I need the Google Places API or an API key?**
-No. Leadscrapper By Scalvexa reads the public Google Maps search results in your browser —
-there's no API key and no Google Maps API billing.
+## 🤝 Contributing
 
-**Is there a limit on how many results I can scrape?**
-No paid limit. You can collect the businesses Google Maps returns for a search;
-use a reasonable pace to stay within the platforms' terms of service.
+Contributions, suggestions, and bug reports are welcome!
 
-**Can it scrape emails and phone numbers from business websites?**
-Yes! You can enable "Enrich missing email / phone" in extension Settings. When enabled, Leadscrapper By Scalvexa asks for permission to access websites and extracts emails, phone numbers, and social links from company websites during export. It uses plain HTML fetch without JavaScript rendering; for sites that require JavaScript execution, the optional Puppeteer backend can be used.
+1. Fork the repository.
+2. Create a feature branch.
+3. Make and test your changes.
+4. Submit a pull request describing your improvement.
 
-**Does it work with Yandex Maps and 2GIS too?**
-Yes — the same extension scrapes Google Maps, Yandex Maps and 2GIS.
+For bug reports and feature requests, visit [GitHub Issues](https://github.com/Kaibhav-KD/leadscrapper-by-scalvexa/issues).
 
-## Keywords
+---
 
-free google maps scraper · google maps scraper chrome extension · google maps
-data extractor · scrape google maps · google maps lead generation · business
-leads scraper · yandex maps scraper · 2gis scraper · email & phone scraper ·
-export google maps to csv/excel · open-source web scraper · no API key.
+## 🙏 Special Thanks
 
-## Links
-- 🌐 Website & docs: **[leadscrapper-by-scalvexa.vercel.app](https://leadscrapper-by-scalvexa.vercel.app/)**
-- 📦 GitHub: **[github.com/Kaibhav-KD/leadscrapper-by-scalvexa](https://github.com/Kaibhav-KD/leadscrapper-by-scalvexa)**
-- 📖 How to use: [leadscrapper-by-scalvexa.vercel.app/how-to-use](https://leadscrapper-by-scalvexa.vercel.app/how-to-use)
-- ❓ FAQ: [leadscrapper-by-scalvexa.vercel.app/faq](https://leadscrapper-by-scalvexa.vercel.app/faq)
+Open-source software grows through the efforts, creativity, and generosity of developers who share their work with the community.
 
-## License
-[MIT](./LICENSE) — free for personal and commercial use.
-=======
-# leadscrapper-by-scalvexa
->>>>>>> cdfd10856eb9886912cc60efd04b044515792b59
+A special thank-you to the following people and projects for their contributions and inspiration:
+
+- **[ozhehkovski (Eugeniusz)](https://github.com/ozhehkovski)** — Thank you for your work and for contributing to the open-source ecosystem that helps developers learn, build, and create.
+- **[Claude](https://github.com/claude)** — Thank you for helping advance developer productivity and making AI-assisted building an exciting part of modern software development.
+- **[poqob (MD)](https://github.com/poqob)** — Thank you for your work and contributions to the developer community.
+
+Your work and the wider open-source community help make projects like Leadscrapper by Scalvexa possible. We appreciate the people who build, share, and inspire others to keep creating.
+
+**Built with appreciation for the open-source community. ❤️**
+
+---
+
+## 📄 License
+
+This project is distributed under the MIT License if confirmed by the repository's `LICENSE` file. Please check the actual license before redistributing or using the code commercially.
+
+---
+
+## 🌟 Our Philosophy
+
+At Scalvexa, we believe useful tools should simplify work, reduce repetitive tasks, and give people greater control over their workflows.
+
+Leadscrapper by Scalvexa is built around one simple principle:
+
+> **Your leads. Your fields. Your workflow.**
+
+Less manual filtering. More time for meaningful prospecting.
+
+**Explore the project on GitHub:**  
+https://github.com/Kaibhav-KD/leadscrapper-by-scalvexa
