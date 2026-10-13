@@ -1,4 +1,6 @@
 # Leadscrapper by Scalvexa
+<img width="1254" height="1254" alt="leadscrapper-by-scalvexa" src="https://github.com/user-attachments/assets/4ec8679f-007d-4744-9fc3-f35db60c6ad5" />
+
 
 ### Find Leads. Filter What Matters. Export Clean Data.
 
