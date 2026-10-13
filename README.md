@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Leadscrapper By Scalvexa — Free Google Maps Scraper (Chrome Extension)
 
 **Leadscrapper By Scalvexa is a free, open-source Google Maps scraper** — a Chrome /
@@ -164,3 +165,6 @@ export google maps to csv/excel · open-source web scraper · no API key.
 
 ## License
 [MIT](./LICENSE) — free for personal and commercial use.
+=======
+# leadscrapper-by-scalvexa
+>>>>>>> cdfd10856eb9886912cc60efd04b044515792b59
