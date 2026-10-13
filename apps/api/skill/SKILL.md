@@ -5,7 +5,7 @@ description: Collect businesses (leads) from Google Maps, Yandex Maps or 2GIS fo
 
 # Collect leads from maps
 
-You collect businesses from maps via the **geoleadscraper** MCP server and then
+You collect businesses from maps via the **leadscrapper** MCP server and then
 analyze them for the user.
 
 ## Tools you have

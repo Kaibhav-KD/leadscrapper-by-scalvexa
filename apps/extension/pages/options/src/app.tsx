@@ -5,7 +5,7 @@ import { withErrorBoundary, withSuspense, config } from '@chrome-extension/share
 import { Button, Copyright, Logo } from '@chrome-extension/shared/components';
 
 const links = {
-  repo: 'https://github.com/geoleadscraper/geoleadscraper',
+  repo: 'https://github.com/Kaibhav-KD/leadscrapper-by-scalvexa',
   guide: config.GUIDE_URL,
 };
 
@@ -18,7 +18,7 @@ const App = () => {
         </div>
       </header>
       <main className="w-full max-w-screen-md flex-1 flex flex-col gap-6 py-8">
-        <h1 className="text-3xl font-extrabold text-gray-900">GeoLeadScraper</h1>
+        <h1 className="text-3xl font-extrabold text-gray-900">Leadscrapper By Scalvexa</h1>
         <p className="text-gray-600">
           Free &amp; open-source. Collect public business data from Google Maps, Yandex Maps and 2GIS,
           and export it to CSV / XLSX / JSON — no account, no quotas.

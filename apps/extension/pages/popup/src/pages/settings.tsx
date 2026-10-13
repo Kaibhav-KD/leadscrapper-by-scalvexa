@@ -8,6 +8,14 @@ import {
   DATA_EXPORT_FORMATS_SELECT,
 } from '@chrome-extension/shared/enums';
 
+const LOCATION_FIELD_VALUES = [
+  'latitude',
+  'longitude',
+  'address',
+  'street',
+  'municipality',
+];
+
 const TABS = {
   GENERAL: 'general',
   EXPORT: 'export',
@@ -47,6 +55,7 @@ const SettingsGeneralView = () => {
     auto_download,
     backend_url,
     enrich_missing,
+    collect_location,
   } = store.state || {};
 
   useEffect(() => {
@@ -83,6 +92,9 @@ const SettingsGeneralView = () => {
     },
     onBackendChange: (url: string): void => {
       store.update(state => ({ ...state, backend_url: url.trim() }));
+    },
+    onCollectLocationChange: (collect: boolean): void => {
+      store.update(state => ({ ...state, collect_location: collect }));
     },
   };
 
@@ -127,6 +139,15 @@ const SettingsGeneralView = () => {
           The extension extracts contacts directly inside your browser. Optional: you can connect a local Puppeteer backend for advanced JS rendering.
         </p>
       </div>
+      <div>
+        <span>5. Collect location data (latitude / longitude / address).</span>
+        <div className="mt-2">
+          <Switch checked={collect_location} onCheckedChange={handlers.onCollectLocationChange} />
+        </div>
+        <p className="mt-1 text-xs text-neutral-500">
+          Disable to skip location fields entirely — faster extraction and no location data in your export.
+        </p>
+      </div>
     </div>
   );
 };
@@ -140,6 +161,8 @@ interface IExportFieldItem {
 const SettingsExportView = () => {
   const store = useStore();
   const [items, setItems] = useState<IExportFieldItem[]>([]);
+
+  const collect_location = store.state?.collect_location !== undefined ? store.state?.collect_location : true;
 
   const handleSelect = (items: IExportFieldItem[]) => {
     setItems(() => items);
@@ -162,8 +185,21 @@ const SettingsExportView = () => {
         <p className="mt-1 text-xs text-neutral-500">
           Enable &apos;Enrich missing email / phone&apos; in Settings to fill these fields from business websites before export.
         </p>
+        {collect_location === false && (
+          <p className="mt-1 text-xs text-amber-600">
+            Location fields (latitude, longitude, address, street, municipality) are hidden because location collection is disabled.
+          </p>
+        )}
         <div className="mt-2">
-          <ToggleGroup items={items} filter={items => items} onChange={handleSelect} />
+          <ToggleGroup
+            items={items}
+            filter={items =>
+              collect_location === false
+                ? items.filter(item => !LOCATION_FIELD_VALUES.includes(item.value))
+                : items
+            }
+            onChange={handleSelect}
+          />
         </div>
       </div>
     </div>

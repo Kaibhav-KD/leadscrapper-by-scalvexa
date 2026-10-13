@@ -11,7 +11,7 @@ export class AppController {
   @HttpCode(HttpStatus.OK)
   @Get()
   async health() {
-    return { status: 'ok', service: 'geoleadscraper-api' };
+    return { status: 'ok', service: 'leadscrapper-api' };
   }
 
   /** Extract contacts (emails, phones, socials) from a list of websites. */

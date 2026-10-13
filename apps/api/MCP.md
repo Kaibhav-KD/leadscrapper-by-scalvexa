@@ -1,4 +1,4 @@
-# GeoLeadScraper MCP server
+# Leadscrapper By Scalvexa MCP server
 
 An MCP (Model Context Protocol) server that lets an MCP client — e.g. **Claude
 Code** or **Claude Desktop** — collect businesses from maps and scrape website
@@ -46,18 +46,18 @@ cd apps/api && docker compose up --build
 
 **Claude Code:**
 ```bash
-claude mcp add geoleadscraper \
-  --env BACKEND_URL=http://localhost:5050 \
-  -- node /ABSOLUTE/PATH/TO/geoleadscraper/apps/api/mcp-server.mjs
+claude mcp add leadscrapper \
+    --env BACKEND_URL=http://localhost:5050 \
+    -- node /ABSOLUTE/PATH/TO/leadscrapper-by-scalvexa/apps/api/mcp-server.mjs
 ```
 
 **Claude Desktop** — add to `claude_desktop_config.json`:
 ```json
 {
   "mcpServers": {
-    "geoleadscraper": {
+    "leadscrapper": {
       "command": "node",
-      "args": ["/ABSOLUTE/PATH/TO/geoleadscraper/apps/api/mcp-server.mjs"],
+      "args": ["/ABSOLUTE/PATH/TO/leadscrapper-by-scalvexa/apps/api/mcp-server.mjs"],
       "env": { "BACKEND_URL": "http://localhost:5050" }
     }
   }

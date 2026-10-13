@@ -1,7 +1,7 @@
 {
   "name": "mapscan_api",
   "version": "1.0.0",
-  "description": "Stateless website contact-scraping backend for the GeoLeadScraper extension.",
+  "description": "Stateless website contact-scraping backend for the Leadscrapper By Scalvexa extension.",
   "private": true,
   "license": "MIT",
   "scripts": {

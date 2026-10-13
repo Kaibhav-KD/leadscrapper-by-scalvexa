@@ -27,6 +27,8 @@ export interface IContentContextState {
   export_fields: string[];
   /** Before export, fill missing email/phone by scraping each business website. */
   enrich_missing?: boolean;
+  /** When false, location-related export fields are hidden / stripped. */
+  collect_location?: boolean;
 }
 
 export interface IContentContext {
@@ -55,6 +57,7 @@ export const ContentContext = createContext<IContentContext>({
     export_format: DATA_EXPORT_FORMATS.CSV,
     export_fields: [],
     enrich_missing: false,
+    collect_location: true,
     request_interval: 5000,
   },
   setContext: () => {},

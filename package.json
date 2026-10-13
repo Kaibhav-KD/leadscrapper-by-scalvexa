@@ -1,17 +1,25 @@
 {
-  "name": "geoleadscraper",
+  "name": "leadscrapper-by-scalvexa",
   "version": "1.0.0",
-  "description": "Open-source browser extension to scrape business data from Google Maps, Yandex Maps and 2GIS, with an optional self-hosted backend for website contact enrichment.",
+  "description": "Leadscrapper By Scalvexa — open-source browser extension to scrape business data from Google Maps, Yandex Maps and 2GIS, with an optional self-hosted backend for website contact enrichment.",
   "private": true,
   "license": "MIT",
   "type": "module",
+  "homepage": "https://leadscrapper-by-scalvexa.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kaibhav-KD/leadscrapper-by-scalvexa.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kaibhav-KD/leadscrapper-by-scalvexa/issues"
+  },
   "packageManager": "pnpm@9.4.0",
   "engines": {
     "node": ">=20.0.0"
   },
   "scripts": {
     "build": "turbo build",
-    "build:extension": "pnpm --filter mapscan_extension build:local",
+    "build:extension": "pnpm exec turbo run build --filter=./apps/extension/**",
     "build:api": "pnpm --filter mapscan_api build",
     "dev:extension": "pnpm --filter mapscan_extension start:dev",
     "dev:api": "pnpm --filter mapscan_api start:dev",

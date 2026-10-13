@@ -1,0 +1,19 @@
+Leadscrapper By Scalvexa — Install (Chrome)
+
+IMPORTANT: This is a Chrome extension, not a Windows .exe app.
+You install it in Chrome with "Load unpacked".
+
+Option A — from the unzipped folder (easiest)
+1. Unzip leadscrapper-extension-v1.2.0.zip  OR use the folder:
+   leadscrapper-extension-v1.2.0
+2. Open Chrome and go to:  chrome://extensions
+3. Turn ON "Developer mode" (top right)
+4. Click "Load unpacked"
+5. Select the folder that contains manifest.json
+   (leadscrapper-extension-v1.2.0)
+6. Open Google Maps, search for businesses, use the panel
+
+Option B — double-click INSTALL.bat
+It opens chrome://extensions and shows these steps.
+
+Do NOT load the whole source-code repo — only this built folder.

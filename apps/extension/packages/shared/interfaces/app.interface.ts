@@ -7,6 +7,8 @@ export interface IAppStoreState {
   backend_url?: string;
   /** Before export, fill missing email/phone by scraping each business website. */
   enrich_missing?: boolean;
+  /** Skip collecting location (lat/long/address) data during extraction. */
+  collect_location?: boolean;
 }
 
 export interface IExtractWebsiteResult {

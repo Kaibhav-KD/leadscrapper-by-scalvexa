@@ -50,7 +50,7 @@ jobs:
         id: package
         run: |
           version=$(node -p "require('./apps/extension/dist/manifest.json').version")
-          name="geoleadscraper-extension-v${version}.zip"
+          name="leadscrapper-extension-v${version}.zip"
           (cd apps/extension/dist && zip -r -q "../../../${name}" . -x '*.map')
           unzip -l "${name}" | grep -q ' manifest.json$'
           echo "name=${name}" >> "$GITHUB_OUTPUT"

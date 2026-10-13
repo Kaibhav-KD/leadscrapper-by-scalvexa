@@ -81,15 +81,31 @@ button {
 }
 
 .logo {
-  @apply font-semibold text-lg;
+  @apply flex flex-row items-center gap-2 font-semibold text-lg;
+}
+
+.logo-image {
+  @apply object-contain rounded-sm shrink-0;
+}
+
+.logo-text {
+  @apply leading-none;
 }
 
 .logo-base {
   @apply text-lg xl:text-xl;
 }
 
+.logo-base .logo-image {
+  @apply w-8 h-8;
+}
+
 .logo-sm {
   @apply text-sm;
+}
+
+.logo-sm .logo-image {
+  @apply w-6 h-6;
 }
 
 .badge {

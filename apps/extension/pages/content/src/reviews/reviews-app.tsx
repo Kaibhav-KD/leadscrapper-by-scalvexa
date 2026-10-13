@@ -130,7 +130,7 @@ export const ReviewsApp = () => {
 
       exportResults({ format, prefix, fields: GOOGLE_MAPS_REVIEW_FIELDS, data });
     } catch (e) {
-      console.error('geoleadscraper reviews export error:', (e as Error)?.message, (e as Error)?.stack);
+      console.error('leadscrapper reviews export error:', (e as Error)?.message, (e as Error)?.stack);
     }
   };
 

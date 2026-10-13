@@ -1,6 +1,6 @@
-# @geoleadscraper/api
+# @leadscrapper-by-scalvexa/api
 
-Stateless website **contact-scraping** backend for the GeoLeadScraper extension.
+Stateless website **contact-scraping** backend for the Leadscrapper By Scalvexa extension.
 No database, no auth, no billing — just a single endpoint that visits a list of
 URLs with Puppeteer and returns emails, phones and social links.
 

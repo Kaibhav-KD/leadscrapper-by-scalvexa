@@ -37,7 +37,7 @@ const manifest = Object.assign({
   ],
   web_accessible_resources: [
     {
-      resources: ['*.js', '*.css', '*.svg', 'icon-128.png', 'icon-32.png'],
+      resources: ['*.js', '*.css', '*.svg', '*.png', 'logo.png', 'icon-128.png', 'icon-32.png'],
       matches: ['*://*/*'],
     },
   ],

@@ -1,15 +1,15 @@
 export const config = {
   APP_VERSION: '1.2.0',
-  APP_NAME: 'geoleadscraper',
-  EXPORT_FILE_NAME_PREFIX: 'geoleadscraper',
+  APP_NAME: 'Leadscrapper By Scalvexa',
+  EXPORT_FILE_NAME_PREFIX: 'leadscrapper',
   // Default extraction cap per run (no plans/quotas anymore — everything is free).
   EXTRACT_LIMIT: 10000,
   // Default backend origin used for optional website contact enrichment.
   DEFAULT_BACKEND_URL: 'http://localhost:5050',
-  HOME_PAGE_URL: 'https://geoleadscraper.com',
-  FAQ_URL: 'https://geoleadscraper.com/faq',
-  GUIDE_URL: 'https://geoleadscraper.com/how-to-use',
-  CHANGELOG_URL: 'https://github.com/geoleadscraper/geoleadscraper/releases',
+  HOME_PAGE_URL: 'https://leadscrapper-by-scalvexa.vercel.app',
+  FAQ_URL: 'https://leadscrapper-by-scalvexa.vercel.app/faq',
+  GUIDE_URL: 'https://leadscrapper-by-scalvexa.vercel.app/how-to-use',
+  CHANGELOG_URL: 'https://github.com/Kaibhav-KD/leadscrapper-by-scalvexa/releases',
   REQUEST_INTERVAL: {
     GOOGLE_MAPS: 2000,
     YANDEX_MAPS: 2000,

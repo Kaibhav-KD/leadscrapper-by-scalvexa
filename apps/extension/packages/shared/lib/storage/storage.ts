@@ -18,6 +18,7 @@ export const storage: AppStorage = {
       export_fields: DATA_EXPORT_BASIC_FIELDS,
       backend_url: config.DEFAULT_BACKEND_URL,
       enrich_missing: false,
+      collect_location: true,
     },
     {
       storageType: StorageType.Local,

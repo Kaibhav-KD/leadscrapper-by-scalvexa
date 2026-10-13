@@ -28,6 +28,7 @@ import {
 
 import { ContentContext, IContentContextState } from '@/context';
 import { Layout } from '@/layout';
+import { ExportFieldsPicker } from '@/components';
 import { config } from '@chrome-extension/shared';
 
 const { EXTRACT_LIMIT } = config;
@@ -106,6 +107,7 @@ const App = ({ platform }: { platform: DataPlatform }) => {
     request_interval: 0,
     auto_download: false,
     enrich_missing: false,
+    collect_location: true,
     export_format: DATA_EXPORT_FORMATS.CSV,
     export_fields: [],
   });
@@ -113,9 +115,12 @@ const App = ({ platform }: { platform: DataPlatform }) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [enrichmentProgress, setEnrichmentProgress] = useState<{ current: number; total: number } | null>(null);
   const [permissionMissing, setPermissionMissing] = useState<boolean>(false);
+  const [fieldsCollapsed, setFieldsCollapsed] = useState<boolean>(false);
 
   const stateRef = useRef(state);
   const controllerRef = useRef<AbortController | null>(null);
+  // Ignore store polling briefly after a local field change so the UI doesn't snap back.
+  const fieldsDirtyUntilRef = useRef(0);
   // Set when this tab was opened by the backend for an MCP auto-collection job.
   const autoJobRef = useRef<{ id: string; limit: number; extractContacts: boolean } | null>(null);
 
@@ -258,21 +263,52 @@ const App = ({ platform }: { platform: DataPlatform }) => {
 
   const getSettings = async () => {
     const { data } = await sendBackgroundEvent({ type: BACKGROUND_EVENTS.GET_STORE });
-    const { export_format, auto_download, export_fields, request_interval, enrich_missing } = data || {};
+    const {
+      export_format,
+      auto_download,
+      export_fields,
+      request_interval,
+      enrich_missing,
+      collect_location,
+    } = data || {};
 
     const extract_websites = ((export_fields as string[]) || []).some(field =>
       [DATA_EXPORT_FIELDS.EMAIL, DATA_EXPORT_FIELDS.PHONES, DATA_EXPORT_FIELDS.SOCIALS].includes(field),
     );
 
+    const keepLocalFields = Date.now() < fieldsDirtyUntilRef.current;
+
     setState(state => ({
       ...state,
-      extract_websites,
+      extract_websites: keepLocalFields
+        ? state.extract_websites
+        : extract_websites,
       export_format,
       auto_download,
-      export_fields: Array.isArray(export_fields) ? export_fields : [],
+      export_fields: keepLocalFields
+        ? state.export_fields
+        : Array.isArray(export_fields)
+          ? export_fields
+          : [],
       request_interval,
       enrich_missing: enrich_missing !== undefined ? enrich_missing : false,
+      collect_location: collect_location !== undefined ? collect_location : true,
     }));
+  };
+
+  const updateExportFields = async (fields: string[]) => {
+    fieldsDirtyUntilRef.current = Date.now() + 1500;
+    setState(state => ({
+      ...state,
+      export_fields: fields,
+      extract_websites: fields.some(field =>
+        [DATA_EXPORT_FIELDS.EMAIL, DATA_EXPORT_FIELDS.PHONES, DATA_EXPORT_FIELDS.SOCIALS].includes(field),
+      ),
+    }));
+    await sendBackgroundEvent({
+      type: BACKGROUND_EVENTS.UPDATE_STORE,
+      payload: { export_fields: fields },
+    }).catch(() => undefined);
   };
 
   const init = async () => {
@@ -328,7 +364,7 @@ const App = ({ platform }: { platform: DataPlatform }) => {
         setEnrichmentProgress({ current: processed, total: urls.length });
       }
 
-      console.log(`[GeoLeadScraper] Finished enrichment crawl. Extracted ${allExtractedData.length} website results.`);
+      console.log(`[Leadscrapper] Finished enrichment crawl. Extracted ${allExtractedData.length} website results.`);
 
       const normalize = (u: string) =>
         u ? u.trim().toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/+$/, '') : '';
@@ -364,7 +400,7 @@ const App = ({ platform }: { platform: DataPlatform }) => {
       setState(prev => ({ ...prev, data: updatedData }));
       return updatedData;
     } catch (err) {
-      console.error('[GeoLeadScraper] Website enrichment failed:', err);
+      console.error('[Leadscrapper] Website enrichment failed:', err);
       return items;
     } finally {
       await sleep(500);
@@ -429,7 +465,7 @@ const App = ({ platform }: { platform: DataPlatform }) => {
         // fields are always up to date (avoids any stale-state mismatch).
         const settings = await sendBackgroundEvent({ type: BACKGROUND_EVENTS.GET_STORE });
         const store =
-          (settings?.data as { export_format?: string; export_fields?: string[]; enrich_missing?: boolean }) || {};
+          (settings?.data as { export_format?: string; export_fields?: string[]; enrich_missing?: boolean; collect_location?: boolean }) || {};
 
         const format = store.export_format || state.export_format || DATA_EXPORT_FORMATS.CSV;
 
@@ -439,6 +475,20 @@ const App = ({ platform }: { platform: DataPlatform }) => {
           Array.isArray(store.export_fields) ? store.export_fields : state.export_fields,
         );
         if (fields.length === 0) fields = [...DATA_EXPORT_BASIC_FIELDS];
+
+        // When the user disables location collection, drop every location
+        // column (and the underlying data) from the export entirely.
+        const collectLocation = store.collect_location !== undefined ? store.collect_location : true;
+        const LOCATION_FIELDS = [
+          DATA_EXPORT_FIELDS.LATITUDE,
+          DATA_EXPORT_FIELDS.LONGITUDE,
+          DATA_EXPORT_FIELDS.ADDRESS,
+          DATA_EXPORT_FIELDS.STREET,
+          DATA_EXPORT_FIELDS.MUNICIPALITY,
+        ];
+        if (!collectLocation) {
+          fields = fields.filter(field => !LOCATION_FIELDS.includes(field));
+        }
 
         const prefix = [config.EXPORT_FILE_NAME_PREFIX, platform].join('-');
 
@@ -474,7 +524,7 @@ const App = ({ platform }: { platform: DataPlatform }) => {
         exportResults({ format, prefix, fields, data });
       } catch (e) {
         // Surface failures to the page console for debugging instead of failing silently.
-        console.error('geoleadscraper export error:', (e as Error)?.message, (e as Error)?.stack);
+        console.error('leadscrapper export error:', (e as Error)?.message, (e as Error)?.stack);
       }
     },
   };
@@ -601,6 +651,16 @@ const App = ({ platform }: { platform: DataPlatform }) => {
                       </div>
                     )}
 
+                    {!extracting && enrichmentProgress === null && (
+                      <ExportFieldsPicker
+                        selected={state.export_fields || []}
+                        collectLocation={state.collect_location !== false}
+                        collapsed={fieldsCollapsed}
+                        onToggleCollapse={() => setFieldsCollapsed(value => !value)}
+                        onChange={updateExportFields}
+                      />
+                    )}
+
                     <div className="mt-2 flex flex-col">
                       {initiated ? (
                         <Stack>
@@ -623,7 +683,10 @@ const App = ({ platform }: { platform: DataPlatform }) => {
                                 variant="secondary"
                                 size="sm"
                                 onClick={handlers.export}
-                                disabled={enrichmentProgress !== null}>
+                                disabled={
+                                  enrichmentProgress !== null ||
+                                  !(state.export_fields || []).length
+                                }>
                                 {enrichmentProgress !== null
                                   ? `Enriching (${enrichmentProgress.current}/${enrichmentProgress.total})...`
                                   : `Export results (${results})`}
@@ -649,7 +712,11 @@ const App = ({ platform }: { platform: DataPlatform }) => {
                         </Stack>
                       ) : (
                         <Stack>
-                          <Button variant="secondary" size="sm" onClick={handlers.extractStartClick}>
+                          <Button
+                            variant="secondary"
+                            size="sm"
+                            onClick={handlers.extractStartClick}
+                            disabled={!(state.export_fields || []).length}>
                             Start extracting
                           </Button>
                         </Stack>

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * GeoLeadScraper MCP server (stdio).
+ * Leadscrapper By Scalvexa MCP server (stdio).
  *
- * Bridges an MCP client (e.g. Claude) to the GeoLeadScraper backend. Collection
+ * Bridges an MCP client (e.g. Claude) to the Leadscrapper By Scalvexa backend. Collection
  * itself happens in the Chrome extension: `collect_maps` creates a job on the
  * backend, the extension (running in Chrome, with this backend configured)
  * picks it up, scrapes the map and submits the results, which this tool returns.
@@ -76,7 +76,7 @@ async function enrichWithContacts(records) {
   });
 }
 
-const server = new McpServer({ name: 'geoleadscraper', version: '1.0.0' });
+const server = new McpServer({ name: 'leadscrapper', version: '1.0.0' });
 
 server.registerTool(
   'collect_maps',
@@ -84,7 +84,7 @@ server.registerTool(
     title: 'Collect businesses from a map',
     description:
       'Scrape businesses from Google Maps, Yandex Maps or 2GIS for a search query. ' +
-      'Requires Chrome open with the GeoLeadScraper extension, configured to point at this backend. ' +
+      'Requires Chrome open with the Leadscrapper By Scalvexa extension, configured to point at this backend. ' +
       'The extension opens a background tab, scrapes the results and returns them. ' +
       'Returns an array of business records (name, address, phone, website, rating, etc.).',
     inputSchema: {
@@ -135,7 +135,7 @@ server.registerTool(
     }
 
     return err(
-      'Timed out waiting for results. Make sure Chrome is open with the GeoLeadScraper extension ' +
+      'Timed out waiting for results. Make sure Chrome is open with the Leadscrapper By Scalvexa extension ' +
         'and its Backend URL points at this server, so it can pick up the job.',
     );
   },

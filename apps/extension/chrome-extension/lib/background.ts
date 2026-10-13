@@ -164,6 +164,16 @@ chrome.runtime.onMessage.addListener(
         });
       }
 
+      if (action === BACKGROUND_EVENTS.UPDATE_STORE) {
+        const patch = (payload as Record<string, unknown>) || {};
+        chrome.storage.local.get('store', ({ store }) => {
+          const next = { ...(store || {}), ...patch };
+          chrome.storage.local.set({ store: next }, () => {
+            send({ data: next, error: false });
+          });
+        });
+      }
+
       // a content script asks whether its tab was opened for an auto-collect job
       if (action === BACKGROUND_EVENTS.CONTENT_READY) {
         const tabId = sender.tab?.id;

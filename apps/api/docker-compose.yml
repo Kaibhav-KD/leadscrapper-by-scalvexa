@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: geoleadscraper-api
+    image: leadscrapper-api
     restart: unless-stopped
     ports:
       - "${PORT:-5050}:5050"
