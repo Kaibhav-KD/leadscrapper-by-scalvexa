@@ -108,7 +108,7 @@ Your workflow stays focused on the information you actually need.
 
 1. Visit the [GitHub Releases page](https://github.com/Kaibhav-KD/leadscrapper-by-scalvexa/releases/latest).
 2. Download an available extension package.
-3. Extract the downloaded ZIP file.
+3. Downloaded the leadscrapper-extension-v1.2.0 folder .
 4. Open `chrome://extensions` in Chrome.
 5. Enable **Developer mode**.
 6. Click **Load unpacked**.
